@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Practice</title>
+    <script>
+        let startTime = new Date();
+
+        async function submitInput() {
+            const userInput = document.getElementById("user-input").value;
+            const timeTaken = (new Date() - startTime) / 1000;
+
+            const response = await fetch("/handle_typing", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    level_number: {{ level_number }},
+                    user_input: userInput,
+                    time_taken: timeTaken
+                })
+            });
+
+            const result = await response.json();
+            document.getElementById("feedback").innerText = result.message;
+
+            // Show the Back to Main Menu button if the level is completed
+            if (result.is_correct) {
+                document.getElementById("back-button").style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    {% extends "base.html" %}
+
+    {% block content %}   
+    <h1>Level {{ level_number }}</h1>
+    <p><strong>Target Code:</strong></p>
+    <pre>{{ level_code }}</pre>
+    <textarea id="user-input" rows="5" cols="50"></textarea><br>
+    <button onclick="submitInput()">Submit</button>
+    <p id="feedback"></p>
+
+    <!-- Back to Main Menu button -->
+    <a href="/" id="back-button" style="display: none;">
+        <button>Back to Main Menu</button>
+    </a>
+    {% endblock %}
+</body>
+</html>
+

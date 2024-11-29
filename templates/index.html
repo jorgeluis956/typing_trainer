@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <h1>Welcome to the Typing Trainer</h1>
+    <ul>
+        {% for level, code in levels.items() %}
+        <li>
+            <a href="/level/{{ level }}">Start Level {{ level }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/progress">View Progress</a>
+    {% endblock %}
+</body>
+</html>
+
