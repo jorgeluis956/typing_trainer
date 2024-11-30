@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Typing Trainer{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Trainer</title>
 </head>
 <body>
-    <header>
+    <nav>
         <a href="/">Home</a> |
-        <a href="/progress">Progress</a>
-    </header>
+        <a href="/progress">Progress</a> |
+        <a href="/about">About</a>
+    </nav>
     <hr>
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
 
