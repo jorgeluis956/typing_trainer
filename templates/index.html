@@ -2,22 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Trainer</title>
 </head>
 <body>
-    {% extends "base.html" %}
-
-    {% block content %}
     <h1>Welcome to the Typing Trainer</h1>
     <ul>
-        {% for level, code in levels.items() %}
-        <li>
-            <a href="/level/{{ level }}">Start Level {{ level }}</a>
-        </li>
+        {% for level_number, level_description in levels.items() %}
+            <li><a href="/level/{{ level_number }}">Start Level {{ level_number }}</a></li>
         {% endfor %}
     </ul>
     <a href="/progress">View Progress</a>
-    {% endblock %}
+    <a href="/about">About</a>
 </body>
 </html>
 
