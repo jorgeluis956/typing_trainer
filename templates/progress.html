@@ -13,13 +13,11 @@
         <tr>
             <th>Level</th>
             <th>Time Taken (s)</th>
-            <th>Mistakes</th>
         </tr>
         {% for level, stats in progress.items() %}
         <tr>
             <td>{{ level }}</td>
             <td>{{ stats.time_taken }}</td>
-            <td>{{ stats.mistakes }}</td>
         </tr>
         {% endfor %}
     </table>
